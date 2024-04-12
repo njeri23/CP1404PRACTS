@@ -1,0 +1,37 @@
+# convert_miles_km.kv
+BoxLayout:
+    orientation: "vertical"
+    padding: 20
+
+    BoxLayout:
+        Label:
+            text: "Miles to Kilometres Converter"
+            font_size: 20
+            size_hint_y: None
+            height: self.texture_size[1]
+        Widget:
+
+    TextInput:
+        id: miles_input
+        input_type: 'number'
+        hint_text: "Enter miles"
+        multiline: False
+        on_text: app.handle_text_input(self.text)
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        Button:
+            text: "+"
+            on_release: app.handle_increment(1)
+        Button:
+            text: "-"
+            on_release: app.handle_increment(-1)
+        Label:
+            text: "km:"
+            size_hint_x: None
+            width: self.texture_size[0]
+        Label:
+            text: app.km_output
+            size_hint_x: None
+            width: self.texture_size[0]
